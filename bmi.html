@@ -1,0 +1,68 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>BMI Calculator</title>
+</head>
+
+<body>
+  BMI Calculator.<br><br>
+  <form name="bmi" action="#" method="get">
+    Weight: 
+    <input name="lbs" placeholder="Enter weight">lbs<br>
+    Height: 
+    <select name="feet">
+      <option value=7>7'</option>
+      <option value="6">6'</option>
+      <option value="5">5'</option>
+      <option value="4">4'</option>
+      <option value="3">3'</option>
+      <option value="2">2'</option>
+      <option value=1>1'</option>
+    </select>
+    (feet)
+    <select name="inches">
+      <option value="11">11"</option>
+      <option value="10">10"</option>
+      <option value="9">9"</option>
+      <option value="8">8"</option>
+      <option value="7">7"</option>
+      <option value="6">6"</option>
+      <option value="5">5"</option>
+      <option value="4">4"</option>
+      <option value="3">3"</option>
+      <option value="2">2"</option>
+      <option value="1">1"</option>
+      <option value="0">0"</option>
+    </select>
+    (inches)
+    <br>
+    <button type="button" onClick="calculateBmi()">Calculate</button>    
+  </form>
+
+  <p id="result-message"></p>
+  <script type="text/javascript">
+    function calculateBmi() {
+      let weight = Number(document.bmi.lbs.value);
+      let height = Number(document.bmi.feet.value) * 12 + Number(document.bmi.inches.value);
+      let bmi = (703 * weight / height / height).toFixed(2);
+      console.log(weight);
+      console.log(height);
+      let rangeMsg = ""
+      if (bmi <= 18.5) {
+        rangeMsg = "You are underweight.";
+      } else if (bmi <= 24.9) {
+        rangeMsg = "You are normal weight.";
+      } else if (bmi <= 29.9) {
+        rangeMsg = "You are overweight.";
+      } else {
+        rangeMsg = "You are overweight.";
+      }
+      document.getElementById("result-message").innerHTML = "Your BMI is " + bmi + ". " + rangeMsg;
+
+      return;
+    }  
+  </script>
+</body>
+</html>
